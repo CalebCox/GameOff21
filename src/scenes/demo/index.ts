@@ -25,9 +25,9 @@ export class DemoScene extends Scene {
     private initMap(): void {
         this.map = this.make.tilemap({ key: 'farm', tileHeight: 16, tileWidth: 16 });
         this.tileset = this.map.addTilesetImage('farm', 'tiles');
-        this.aboveLayer = this.map.createLayer('Above', this.tileset, 0, 0);
-        this.worldLayer = this.map.createLayer('World', this.tileset, 0, 0);
-        this.groundLayer = this.map.createLayer('Ground', this.tileset, 0, 0);
+        this.groundLayer = this.map.createLayer(0, this.tileset, 0, 0);
+        this.worldLayer = this.map.createLayer(1, this.tileset, 0, 0);
+        this.aboveLayer = this.map.createLayer(2, this.tileset, 0, 0);
 
         this.worldLayer.setCollisionByProperty({ collides: true });
     }
