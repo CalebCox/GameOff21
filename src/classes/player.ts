@@ -17,7 +17,6 @@ export class Player extends Actor {
 
     // PHYSICS
     this.getBody().setSize(16, 16);
-    this.getBody().setOffset(8, 0);
   }
 
   update(): void {
@@ -31,7 +30,6 @@ export class Player extends Actor {
     if (this.keyA?.isDown) {
       this.body.velocity.x = -110;
       this.setFrame(2);
-      this.getBody().setOffset(48, 15);
     }
 
     if (this.keyS?.isDown) {
@@ -42,7 +40,6 @@ export class Player extends Actor {
     if (this.keyD?.isDown) {
       this.body.velocity.x = 110;
       this.setFrame(1);
-      this.getBody().setOffset(15, 15);
     }
   }
 }
