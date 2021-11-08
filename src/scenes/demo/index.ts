@@ -31,6 +31,7 @@ export class DemoScene extends Scene {
         this.groundLayer = this.map.createLayer(0, this.tileset, 0, 0);
         this.worldLayer = this.map.createLayer(1, this.tileset, 0, 0);
         this.aboveLayer = this.map.createLayer(2, this.tileset, 0, 0);
+        this.aboveLayer.depth = 3;
 
         this.worldLayer.setCollisionByProperty({ collides: true });
         // this.showDebugWalls();

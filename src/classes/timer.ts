@@ -62,6 +62,8 @@ export class Timer extends Text {
             callback: () => {
                 if (this.timerValue !== 0) {
                     this.changeTimer(TimerOperations.DECREASE, 1);
+                } else {
+                    this.setColor('red');
                 }
             },
             callbackScope: this,
