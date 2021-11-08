@@ -15,9 +15,9 @@ export class DemoScene extends Scene {
 
   create(): void {
     this.initMap();
-    this.player = new Player(this, 100, 100);
+    this.player = new Player(this, 680, 200);
     this.initCamera();
-    this.physics.add.collider(this.player, this.worldLayer, () => console.log('COLLISION DETECTED'), undefined, this);
+    this.physics.add.collider(this.player, this.worldLayer);
 	}
 
     update(): void {
@@ -32,7 +32,7 @@ export class DemoScene extends Scene {
         this.aboveLayer = this.map.createLayer(2, this.tileset, 0, 0);
 
         this.worldLayer.setCollisionByProperty({ collides: true });
-        this.showDebugWalls();
+        // this.showDebugWalls();
     }
     
     private initCamera(): void {

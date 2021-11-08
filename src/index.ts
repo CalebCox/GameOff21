@@ -1,6 +1,6 @@
 import { Game, Types } from "phaser";
 
-import { LoadingScene, DemoScene } from "./scenes";
+import { LoadingScene, DemoScene, UIScene } from "./scenes";
 
 const gameConfig: Types.Core.GameConfig = {
   title: "Phaser game tutorial",
@@ -15,7 +15,7 @@ const gameConfig: Types.Core.GameConfig = {
   physics: {
     default: "arcade",
     arcade: {
-      debug: true,
+      debug: false,
     },
   },
   render: {
@@ -32,7 +32,7 @@ const gameConfig: Types.Core.GameConfig = {
   audio: {
     disableWebAudio: false,
   },
-  scene: [LoadingScene, DemoScene],
+  scene: [LoadingScene, DemoScene, UIScene],
 };
 
 window.sizeChanged = () => {
