@@ -1,6 +1,7 @@
 import { Console } from 'console';
 import { GameObjects, Scene, Tilemaps } from 'phaser';
 import { Player } from '../../classes/player';
+import { EVENTS_NAME } from '../../consts';
 
 export class DemoScene extends Scene {
     private map!: Tilemaps.Tilemap;

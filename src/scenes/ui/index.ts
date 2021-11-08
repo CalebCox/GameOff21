@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 
 import { Timer, TimerOperations } from '../../classes/timer';
+import { EVENTS_NAME } from 'src/consts';
 
 export class UIScene extends Scene {
     private timer!: Timer;
