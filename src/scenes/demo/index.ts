@@ -1,6 +1,7 @@
 import { Console } from 'console';
 import { GameObjects, Scene, Tilemaps } from 'phaser';
 import { Player } from '../../classes/player';
+import { Enemy } from '../../classes/enemy';
 import { EVENTS_NAME } from '../../consts';
 
 export class DemoScene extends Scene {
@@ -10,6 +11,7 @@ export class DemoScene extends Scene {
     private worldLayer!: Tilemaps.TilemapLayer;
     private groundLayer!: Tilemaps.TilemapLayer;
     private player!: Player;
+    private enemy!: Enemy;
   constructor() {
     super('demo-scene');
   }
@@ -17,6 +19,7 @@ export class DemoScene extends Scene {
   create(): void {
     this.initMap();
     this.player = new Player(this, 680, 200);
+    this.initEnemies();
     this.initCamera();
     this.physics.add.collider(this.player, this.worldLayer);
 	}
@@ -34,9 +37,13 @@ export class DemoScene extends Scene {
         this.aboveLayer.depth = 3;
 
         this.worldLayer.setCollisionByProperty({ collides: true });
-        // this.showDebugWalls();
+        this.showDebugWalls();
     }
     
+    private initEnemies(): void {
+      this.enemy = new Enemy(this, 780, 200, 'demo', this.player)
+    }
+
     private initCamera(): void {
         this.cameras.main.setSize(this.game.scale.width, this.game.scale.height);
         this.cameras.main.startFollow(this.player, true, 0.09, 0.09);

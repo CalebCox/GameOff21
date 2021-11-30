@@ -8,9 +8,12 @@ export class Player extends Actor {
   private keyS: Phaser.Input.Keyboard.Key;
   private keyD: Phaser.Input.Keyboard.Key;
   private keySpace: Input.Keyboard.Key;
+  public direction: String;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y, 'demo');
+    this.direction = 'down';
+
 
     // KEYS
     this.keyW = this.scene.input.keyboard.addKey('W');
@@ -21,6 +24,8 @@ export class Player extends Actor {
     this.keySpace = this.scene.input.keyboard.addKey(32);
     this.keySpace.on('down', (event: KeyboardEvent) => {
       // attack animation here when created
+      console.log('Player Facing: ', this.direction);
+      console.log(`Player X: ${this.x}, Player Y: ${this.y}`);
       this.scene.game.events.emit(EVENTS_NAME.attack);
     });
 
@@ -34,21 +39,25 @@ export class Player extends Actor {
     if (this.keyW?.isDown) {
       this.body.velocity.y = -110;
       this.setFrame(3);
+      this.direction = 'up';
     }
 
     if (this.keyA?.isDown) {
       this.body.velocity.x = -110;
       this.setFrame(2);
+      this.direction = 'left';
     }
 
     if (this.keyS?.isDown) {
       this.body.velocity.y = 110;
       this.setFrame(0);
+      this.direction = 'down';
     }
 
     if (this.keyD?.isDown) {
       this.body.velocity.x = 110;
       this.setFrame(1);
+      this.direction = 'right';
     }
   }
 
