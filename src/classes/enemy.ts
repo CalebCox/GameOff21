@@ -22,12 +22,11 @@ export class Enemy extends Actor {
             if (Phaser.Math.Distance.BetweenPoints({ x: this.x, y: this.y }, { x: this.target.x, y: this.target.y }) < this.target.width) {
                 console.log(`Enemy X: ${this.x}, Enemy Y: ${this.y}`);
                 this.x < this.target.x ? console.log('Enemy is to the left of the player') : console.log('Enemy is to the right of the player');
-                this.y < this.target.y ? console.log('Enemy is below the player') : console.log('Enemy is above the player');
-                if ((this.x < this.target.x && this.target.direction !== 'right') || 
-                    (this.x > this.target.x && this.target.direction !== 'left') || 
-                    (this.y < this.target.y && this.target.direction !== 'up') || 
-                    (this.y > this.target.y && this.target.direction !== 'down')) {
-                        
+                this.y < this.target.y ? console.log('Enemy is above the player') : console.log('Enemy is below the player');
+                if ((this.x < this.target.x && this.target.direction !== 'right' && this.target.direction === 'left') || 
+                    (this.x > this.target.x && this.target.direction !== 'left' && this.target.direction === 'right') || 
+                    (this.y > this.target.y && this.target.direction !== 'up' && this.target.direction === 'down') || 
+                    (this.y < this.target.y && this.target.direction !== 'down' && this.target.direction === 'up')) {
                     this.getDamage();
                     this.disableBody(true, false);
                     this.scene.time.delayedCall(300, () => {
@@ -47,6 +46,8 @@ export class Enemy extends Actor {
         if (Phaser.Math.Distance.BetweenPoints({ x: this.x, y: this.y }, {x: this.target.x, y: this.target.y }) < this.AGGRESSOR_RADIUS) {
             this.getBody().setVelocityX(this.target.x - this.x);
             this.getBody().setVelocityY(this.target.y - this.y);
+            // console.log(`Enemy Y: ${this.y} Enemy X: ${this.x}`);
+            // console.log(`Player Y: ${this.target.y} Player X: ${this.target.x}`);
         } else {
             this.getBody().setVelocity(0);
         }
